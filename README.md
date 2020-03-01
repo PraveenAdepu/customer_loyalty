@@ -64,7 +64,7 @@ Run master.py file
 ```
 ## Solution Architecture
 <img src= "images/framework_pipeline.png">
-![](images/framework_pipeline.png)
+
 ## Acknowledgments
 
 * Inspiration from open source projects
