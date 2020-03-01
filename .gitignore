@@ -1,0 +1,10 @@
+# data
+data/
+trained_model/
+pretrained_model/
+
+# extensions
+*.csv
+*.pickle
+*.gz
+*.pptx

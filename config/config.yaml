@@ -1,0 +1,31 @@
+project: Customer loyalty RFM and two clusters
+
+name: customer loyalty RFM
+tags: [version_0.1]
+
+exclude:
+  - output
+  - .csv
+  - .git
+  - .github
+
+parameters:
+# Data
+  source_file_path:                C:\Users\adepup\Documents\Prav-Development\Research\github\customer_loyalty\data\Retail_Data_Transactions.csv
+# Cross validation
+  calibration_period_end:          2013-05-16
+  observation_period_end:          2013-08-16
+# Clusters
+  n_clusters:                      2
+  
+# Embeddings
+
+# Model run parameters
+
+# Execution
+
+# Preprocessing
+
+# Feature Extraction
+
+# Feature Selection  

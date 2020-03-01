@@ -1,0 +1,8 @@
+pandas==0.23.1
+numpy==1.14.3
+scikit_learn==0.19.1
+lifetimes=0.11.1
+pyyaml>=4.2b1
+
+
+
