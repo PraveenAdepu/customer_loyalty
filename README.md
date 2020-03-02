@@ -19,7 +19,11 @@ date          version    author   comments
 	-->master.py
 	 |-->config.yaml
 	 |-->src.customer_rfm.py
-	 
+
+## Source files	
+```
+Please download source files from kaggle : https://www.kaggle.com/regivm/retailtransactiondata
+```
 
 ## Solution Files 
 
