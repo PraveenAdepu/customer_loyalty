@@ -4,6 +4,7 @@ warnings.filterwarnings("ignore")
 
 import pandas as pd
 import yaml as yaml
+import pickle
 
 from src.customer_rfm import customer_rfm
 
@@ -12,11 +13,13 @@ config = yaml.safe_load(open(
     r"C:\Users\adepup\Documents\Prav-Development\Research\github\customer_loyalty\config\config.yaml"))
 n_clusters = config['parameters']['n_clusters']
 
-rfm = customer_rfm()     
-products = rfm.read_source_products_file(config)   
+rfm = customer_rfm() 
+    
+products = rfm.read_source_products_file(config)  
 
 transactions_holdout = rfm.transactions_rfm(config, products)
-transactions_holdout = rfm.frequency_clusters(transactions_holdout, n_clusters)
+
+transactions_holdout = rfm.frequency_clusters(config, transactions_holdout, n_clusters)
 
 confusion_matrix = pd.crosstab(transactions_holdout['frequency_cluster'], transactions_holdout['frequency_holdout_cluster'], rownames=['Actual'], colnames=['Predicted'])
 print(confusion_matrix)

@@ -17,10 +17,9 @@ parameters:
   observation_period_end:          2013-08-16
 # Clusters
   n_clusters:                      2
-  
+# Model save
+  kmeans_model_path:              C:\Users\adepup\Documents\Prav-Development\Research\github\customer_loyalty\models\kmenas_model.pickle
 # Embeddings
-
-# Model run parameters
 
 # Execution
 

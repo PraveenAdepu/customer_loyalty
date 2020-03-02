@@ -4,6 +4,7 @@ from lifetimes.utils import calibration_and_holdout_data
 from lifetimes import GammaGammaFitter
 from lifetimes import BetaGeoFitter
 from sklearn.cluster import KMeans
+import pickle
 
 class customer_rfm():
     '''Customer loyalty RFM implementation using lifetimes package
@@ -92,21 +93,25 @@ class customer_rfm():
         self.transactions_holdout.fillna(0, inplace=True)
         return self.transactions_holdout
 
-    def frequency_clusters(self, transactions_holdout, n_clusters):
+    def frequency_clusters(self, config, transactions_holdout, n_clusters):
         """
         docstring
         """
-        kmeans = KMeans(n_clusters=n_clusters)
+        self.kmeans_model_path = config['parameters']['kmeans_model_path']
+        kmeans_cal = KMeans(n_clusters=n_clusters)
 
-        kmeans.fit(transactions_holdout[['frequency_cal']])
-        transactions_holdout['frequency_cluster'] = kmeans.predict(transactions_holdout[['frequency_cal']])
+        kmeans_cal.fit(transactions_holdout[['frequency_cal']])
+        transactions_holdout['frequency_cluster'] = kmeans_cal.predict(transactions_holdout[['frequency_cal']])
         
         transactions_holdout = self.customer_cluster('frequency_cluster', 'frequency_cal', transactions_holdout, True)
-  
-        kmeans = KMeans(n_clusters=n_clusters)
         
-        kmeans.fit(transactions_holdout[['frequency_holdout']])
-        transactions_holdout['frequency_holdout_cluster'] = kmeans.predict(transactions_holdout[['frequency_holdout']])        
+        with open(self.kmeans_model_path, 'wb') as handle:
+            pickle.dump(kmeans_cal, handle, protocol=pickle.HIGHEST_PROTOCOL)        
+        
+        kmeans_holdout = KMeans(n_clusters=n_clusters)
+        
+        kmeans_holdout.fit(transactions_holdout[['frequency_holdout']])
+        transactions_holdout['frequency_holdout_cluster'] = kmeans_holdout.predict(transactions_holdout[['frequency_holdout']])        
 
         transactions_holdout=self.customer_cluster('frequency_holdout_cluster', 'frequency_holdout', transactions_holdout, True)                
         
