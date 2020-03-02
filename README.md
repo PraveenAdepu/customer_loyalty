@@ -19,7 +19,7 @@ date          version    author   comments
 	-->master.py
 	 |-->config.yaml
 	 |-->src.customer_rfm.py
-
+    -->app.py
 ## Source files	
 ```
 Please download source files from kaggle : https://www.kaggle.com/regivm/retailtransactiondata
@@ -48,6 +48,8 @@ src.customer_rfm.py
 	generic functions to call models functions
     specific train, validate, cv, predict functions
 
+app.py
+	Flask api app to run the models at real time predictions using trained model objects
 ```	
 ## Installation
 ```
