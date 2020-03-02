@@ -3,11 +3,11 @@
 ```
 Purpose 	: Building generic Customer Loyalty RFM Solution pipelines
 Author   	: Prav
-Constraints : Many ways to build solution design
-			  Try to simplify as much as possible in iteration 01
+Constraints     : Many ways to build solution design
+	          Try to simplify as much as possible in iteration 01
 ```
 
-##Contribution list
+## Contribution list
 ```
 Open to accept any contributions
 
@@ -29,27 +29,27 @@ Please download source files from kaggle : https://www.kaggle.com/regivm/retailt
 
 ```	 
 config.config.yaml
-	configuration file to provide all required parameters to solution
+    configuration file to provide all required parameters to solution
 	
 master.py
     master file for instantiation and running the entire solution
     reading configuration file settings
 
 src.customer_rfm.py
-	file for reading source data
+    file for reading source data
     source data can be either from raw data or feature store 
     source data - csv file, database, big data or any source connection
     requires updates as source data changes
 	
-	source data - trainingSet, validationSet and testingSet
+    source data - trainingSet, validationSet and testingSet
     cv split method - defined from config file
     requires updates as cv method changes
 	
-	generic functions to call models functions
+    generic functions to call models functions
     specific train, validate, cv, predict functions
 
 app.py
-	Flask api app to run the models at real time predictions using trained model objects
+    Flask api app to run the models at real time predictions using trained model objects
 ```	
 ## Installation
 ```
